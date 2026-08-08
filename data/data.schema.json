@@ -50,19 +50,7 @@
         },
         "required": ["name", "faculty"]
       }
-    },
-    "programs": {
-      "type": "object",
-      "additionalProperties": {
-        "type": "object",
-        "properties": {
-          "institution": { "type": "string" },
-          "degree_type": { "type": "string" },
-          "funding_model": { "type": "string" },
-          "program_homepage": { "type": "string" }
-        }
-      }
     }
   },
-  "required": ["institutions", "programs"]
+  "required": ["institutions"]
 }

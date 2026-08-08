@@ -83,37 +83,7 @@ main {
   flex: 1;
 }
 
-.tabs {
-  margin-bottom: 1rem;
-  border-bottom: 2px solid var(--border-color);
-}
 
-.tab-btn {
-  padding: 0.75rem 1.5rem;
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -2px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  color: #666;
-}
-
-.tab-btn.active {
-  color: var(--primary-color);
-  border-bottom-color: var(--secondary-color);
-  font-weight: bold;
-}
-
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
-}
-
-table {
   width: 100%;
   border-collapse: collapse;
   background: var(--card-bg);
@@ -160,65 +130,7 @@ th {
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-.programs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
 
-.program-card {
-  background: var(--card-bg);
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-  border: 1px solid var(--border-color);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.program-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-}
-
-.program-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
-}
-
-.program-card h3 {
-  margin-top: 0;
-  font-size: 1.25rem;
-  color: var(--primary-color);
-}
-
-.program-link {
-  display: inline-block;
-  margin-top: 1rem;
-  color: var(--secondary-color);
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.2s;
-}
-
-.program-link:hover {
-  color: #c0392b;
-}
-
-.program-link span {
-  display: inline-block;
-  transition: transform 0.2s;
-}
-
-.program-link:hover span {
-  transform: translateX(4px);
-}
 
 .sparkline-container {
   width: 100px;

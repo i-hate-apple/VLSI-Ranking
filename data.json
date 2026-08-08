@@ -36,19 +36,5 @@
         }
       ]
     }
-  ],
-  "programs": {
-    "Stanford": {
-      "institution": "Stanford",
-      "degree_type": "PhD",
-      "funding_model": "Guaranteed TA/RA",
-      "program_homepage": "http://cs.stanford.edu"
-    },
-    "MIT": {
-      "institution": "MIT",
-      "degree_type": "PhD",
-      "funding_model": "Guaranteed RA",
-      "program_homepage": "http://eecs.mit.edu"
-    }
-  }
+  ]
 }

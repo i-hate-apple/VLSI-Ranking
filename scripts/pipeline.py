@@ -155,7 +155,6 @@ def process_data(data_dir, output_file):
     faculty = load_csv(os.path.join(data_dir, 'faculty.csv'))
     aliases = load_csv(os.path.join(data_dir, 'aliases.csv'))
     venues = load_csv(os.path.join(data_dir, 'venues.csv'))
-    programs = load_csv(os.path.join(data_dir, 'programs.csv'))
     venue_aliases = load_csv(os.path.join(data_dir, 'venue_aliases.csv'))
 
     # Build lookup dictionaries
@@ -236,8 +235,7 @@ def process_data(data_dir, output_file):
 
     # Format output
     output_data = {
-        'institutions': list(institutions_map.values()),
-        'programs': {p['institution']: p for p in programs}
+        'institutions': list(institutions_map.values())
     }
 
     # Write output
