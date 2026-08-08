@@ -220,6 +220,13 @@ th {
   transform: translateX(4px);
 }
 
+.sparkline-container {
+  width: 100px;
+  height: 30px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 footer {
   text-align: center;
   padding: 2rem;

@@ -99,7 +99,10 @@ def process_paper(paper, venue_subareas, faculty_id_by_name):
     """
     Process a single paper. Returns the subarea, matched faculty IDs, and the adjusted count.
     """
-    venue = paper.get('venue', '').lower()
+    venue = paper.get('venue', '')
+    if venue is None:
+        return None, None, None
+    venue = venue.lower().strip()
     if venue not in venue_subareas:
         return None, None, None
         
@@ -153,6 +156,7 @@ def process_data(data_dir, output_file):
     aliases = load_csv(os.path.join(data_dir, 'aliases.csv'))
     venues = load_csv(os.path.join(data_dir, 'venues.csv'))
     programs = load_csv(os.path.join(data_dir, 'programs.csv'))
+    venue_aliases = load_csv(os.path.join(data_dir, 'venue_aliases.csv'))
 
     # Build lookup dictionaries
     faculty_id_by_name = {}
@@ -164,7 +168,20 @@ def process_data(data_dir, output_file):
     for a in aliases:
         faculty_id_by_name[a['alias_name'].lower().strip()] = a['faculty_id']
 
-    venue_subareas = {v['venue_code'].lower(): v['subarea'] for v in venues}
+    venue_subareas = {}
+    venue_subarea_by_code = {}
+    for v in venues:
+        subarea = v['subarea']
+        code = v['venue_code'].lower().strip()
+        venue_subarea_by_code[code] = subarea
+        venue_subareas[code] = subarea
+        venue_subareas[v['full_name'].lower().strip()] = subarea
+        
+    for a in venue_aliases:
+        alias = a['alias_name'].lower().strip()
+        code = a['venue_code'].lower().strip()
+        if code in venue_subarea_by_code:
+            venue_subareas[alias] = venue_subarea_by_code[code]
 
     # Initialize data structure
     institutions_map = defaultdict(lambda: {'name': '', 'country': 'Unknown', 'faculty': []})
