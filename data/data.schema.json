@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "institutions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "country": { "type": "string" },
+          "faculty": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "name": { "type": "string" },
+                "subareas": {
+                  "type": "object",
+                  "additionalProperties": { "type": "number" }
+                },
+                "trend": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "year": { "type": "integer" },
+                      "count": { "type": "number" }
+                    },
+                    "required": ["year", "count"]
+                  }
+                },
+                "coauthors": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "links": {
+                  "type": "object",
+                  "properties": {
+                    "homepage": { "type": "string" },
+                    "scholar": { "type": "string" },
+                    "ieee": { "type": "string" }
+                  }
+                }
+              },
+              "required": ["id", "name", "subareas"]
+            }
+          }
+        },
+        "required": ["name", "faculty"]
+      }
+    },
+    "programs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "institution": { "type": "string" },
+          "degree_type": { "type": "string" },
+          "funding_model": { "type": "string" },
+          "program_homepage": { "type": "string" }
+        }
+      }
+    }
+  },
+  "required": ["institutions", "programs"]
+}

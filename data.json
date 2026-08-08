@@ -1,0 +1,54 @@
+{
+  "institutions": [
+    {
+      "name": "Stanford",
+      "country": "Unknown",
+      "faculty": [
+        {
+          "id": "f1",
+          "name": "Jane Doe",
+          "subareas": {},
+          "trend": [],
+          "coauthors": [],
+          "links": {
+            "homepage": "http://example.com/jane",
+            "scholar": "1234",
+            "ieee": "5678"
+          }
+        }
+      ]
+    },
+    {
+      "name": "MIT",
+      "country": "Unknown",
+      "faculty": [
+        {
+          "id": "f2",
+          "name": "John Smith",
+          "subareas": {},
+          "trend": [],
+          "coauthors": [],
+          "links": {
+            "homepage": "http://example.com/john",
+            "scholar": "4321",
+            "ieee": "8765"
+          }
+        }
+      ]
+    }
+  ],
+  "programs": {
+    "Stanford": {
+      "institution": "Stanford",
+      "degree_type": "PhD",
+      "funding_model": "Guaranteed TA/RA",
+      "program_homepage": "http://cs.stanford.edu"
+    },
+    "MIT": {
+      "institution": "MIT",
+      "degree_type": "PhD",
+      "funding_model": "Guaranteed RA",
+      "program_homepage": "http://eecs.mit.edu"
+    }
+  }
+}
