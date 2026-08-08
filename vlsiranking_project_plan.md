@@ -1,4 +1,4 @@
-# WeHateApple — A CSRankings-style Research & Grad-School Navigator for VLSI, EDA, Architecture & Hardware Security
+# VLSI-Ranking — A CSRankings-style Research & Grad-School Navigator for VLSI, EDA, Architecture & Hardware Security
 
 **Creator:** i-hate-apple
 **Inspired by:** CSRankings.org
@@ -8,9 +8,9 @@
 
 ## 1. Project Description
 
-WeHateApple is an open-source, metrics-driven ranking and discovery platform for hardware research — VLSI, EDA, Computer Architecture, and Hardware Security. It applies CSRankings' core philosophy (rank by publication *count* in top venues, not citations or subjective reputation, to resist gaming) to the hardware research world, which is currently underserved — CSRankings itself barely covers ISSCC, DAC, ICCAD, or hardware security venues.
+VLSI-Ranking is an open-source, metrics-driven ranking and discovery platform for hardware research — VLSI, EDA, Computer Architecture, and Hardware Security. It applies CSRankings' core philosophy (rank by publication *count* in top venues, not citations or subjective reputation, to resist gaming) to the hardware research world, which is currently underserved — CSRankings itself barely covers ISSCC, DAC, ICCAD, or hardware security venues.
 
-The original VLSIRankings spec was a solid ranking engine. The gap: **a ranking table alone doesn't help a student decide where to apply, who to email, or whether they'd actually get in.** WeHateApple keeps the serverless, zero-cost architecture but reframes the whole product around one job-to-be-done:
+The original VLSIRankings spec was a solid ranking engine. The gap: **a ranking table alone doesn't help a student decide where to apply, who to email, or whether they'd actually get in.** VLSI-Ranking keeps the serverless, zero-cost architecture but reframes the whole product around one job-to-be-done:
 
 > "I'm a student who wants to do a PhD/MS in VLSI/hardware. Help me find the right faculty, the right lab, and the right program — and understand my odds."
 
@@ -27,7 +27,7 @@ The original VLSIRankings spec was a solid ranking engine. The gap: **a ranking 
 
 ## 3. What's New vs. the Original Spec (and vs. CSRankings)
 
-| Original VLSIRankings | WeHateApple |
+| Original VLSIRankings | VLSI-Ranking |
 |---|---|
 | Institution + faculty rank table | Same, **plus** advisor-fit discovery layer |
 | Static count-based score | Adds **trend view** (is this lab's output rising/falling by sub-area?) |
@@ -52,7 +52,7 @@ The original VLSIRankings spec was a solid ranking engine. The gap: **a ranking 
 - **Co-authorship Graph**: force-directed graph showing collaboration clusters — useful for spotting joint advising / interdisciplinary labs. Also derived from existing publication data, so no new data-collection risk.
 - **Program Cards (lightweight)**: funding model and program homepage link only, pulled from department pages that already publish this info. Deliberately excludes things like average time-to-degree or cohort size — those aren't consistently published anywhere and would require manual per-program research to keep accurate, which doesn't scale with a weekly automated pipeline.
 
-**Dropped entirely**: anonymized/crowdsourced admissions outcome data ("I got in with X pubs"). This was the highest-risk feature — self-reported outcome data is noisy, hard to moderate, sets false expectations, and carries real privacy/liability exposure. CSRankings deliberately avoids anything like it, and WeHateApple follows that precedent.
+**Dropped entirely**: anonymized/crowdsourced admissions outcome data ("I got in with X pubs"). This was the highest-risk feature — self-reported outcome data is noisy, hard to moderate, sets false expectations, and carries real privacy/liability exposure. CSRankings deliberately avoids anything like it, and VLSI-Ranking follows that precedent.
 
 ### C. Comparison & Planning Tools
 - **Shortlist Builder**: bookmark faculty/institutions, tag with notes ("email sent," "reply received," "fit: high").
@@ -140,7 +140,7 @@ averageCount = Math.pow(
 
 ## 9. Branding
 
-- **Name**: WeHateApple
+- **Name**: VLSI-Ranking
 - **Creator credit**: i-hate-apple
 - **Tagline suggestion**: *"Rankings for the chips that actually ship."* (or similar — happy to brainstorm more if you want options)
 - **Footer**: "Built by i-hate-apple. Open-source, community-maintained, inspired by CSRankings."
@@ -166,7 +166,7 @@ This phasing lets you ship something usable (and CV-worthy) after Phase 1–2 wi
 ```
 System Context:
 You are an expert full-stack developer and system architect. We are building
-"WeHateApple" (created by i-hate-apple), a metrics-based ranking and grad-school
+"VLSI-Ranking" (created by i-hate-apple), a metrics-based ranking and grad-school
 discovery platform for VLSI, EDA, Computer Architecture, and Hardware Security
 research, modeled on CSRankings.org but extended with grad-applicant-focused
 features: program metadata, advisor trend/recruiting signals, a co-authorship

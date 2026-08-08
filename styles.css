@@ -1,57 +1,103 @@
 :root {
-  --primary-color: #2c3e50;
-  --secondary-color: #e74c3c;
-  --bg-color: #f8f9fa;
-  --card-bg: #ffffff;
-  --text-color: #333333;
-  --border-color: #dee2e6;
+  /* Light Theme (Academic / CSRankings Style) */
+  --primary-color: #0056b3;
+  --secondary-color: #e0e0e0;
+  --bg-color: #ffffff;
+  --surface-color: #ffffff;
+  --surface-hover: #f5f5f5;
+  --text-primary: #333333;
+  --text-secondary: #555555;
+  --border-color: #dddddd;
+  --shadow: none;
+  --header-bg: #f8f9fa;
+}
+
+[data-theme="dark"] {
+  /* Dark Theme */
+  --primary-color: #66b2ff;
+  --secondary-color: #444444;
+  --bg-color: #121212;
+  --surface-color: #1e1e1e;
+  --surface-hover: #2d2d2d;
+  --text-primary: #e0e0e0;
+  --text-secondary: #aaaaaa;
+  --border-color: #444444;
+  --shadow: none;
+  --header-bg: #1f1f1f;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   background-color: var(--bg-color);
-  color: var(--text-color);
+  color: var(--text-primary);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
 header {
-  background-color: var(--primary-color);
-  color: white;
-  padding: 2rem 0;
-  text-align: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--header-bg);
+}
+
+.header-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header h1 {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: var(--text-primary);
 }
 
 header p {
-  margin: 0.5rem 0 0;
-  font-size: 1.1rem;
-  opacity: 0.8;
+  margin: 0.25rem 0 0;
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.theme-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  color: var(--text-primary);
+  background-color: var(--surface-color);
+}
+
+.theme-btn:hover {
+  background-color: var(--surface-hover);
 }
 
 main {
   display: flex;
   flex: 1;
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 2rem;
-  gap: 2rem;
+  padding: 1rem;
+  gap: 1.5rem;
   width: 100%;
   box-sizing: border-box;
 }
 
+/* Sidebar */
 .sidebar {
   width: 250px;
-  background: var(--card-bg);
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  background: var(--surface-color);
+  padding: 1rem;
   border: 1px solid var(--border-color);
   height: fit-content;
 }
@@ -63,57 +109,92 @@ main {
 .filter-group h4 {
   margin-top: 0;
   margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.25rem;
 }
 
 .filter-group label {
-  display: block;
-  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.25rem;
   cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.filter-group input[type="checkbox"] {
+  margin-right: 0.5rem;
 }
 
 .filter-group input[type="text"] {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--bg-color);
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.9rem;
   box-sizing: border-box;
 }
 
 .content {
   flex: 1;
+  min-width: 0;
 }
 
-
+/* Ranking Table */
+table {
   width: 100%;
   border-collapse: collapse;
-  background: var(--card-bg);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  border-radius: 8px;
-  overflow: hidden;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  font-size: 0.95rem;
 }
 
 th, td {
-  padding: 1rem;
+  padding: 0.5rem;
   text-align: left;
-  border-bottom: 1px solid var(--border-color);
+  border: 1px solid var(--border-color);
 }
 
 th {
-  background-color: var(--primary-color);
-  color: white;
+  background: var(--header-bg);
+  color: var(--text-primary);
+  font-weight: bold;
 }
 
 .inst-row {
   cursor: pointer;
-  transition: background-color 0.2s;
+  background: var(--surface-color);
 }
 
 .inst-row:hover {
-  background-color: #f1f3f5;
+  background: var(--surface-hover);
+}
+
+.inst-row td:first-child {
+  width: 50px;
+  text-align: center;
+}
+
+.inst-row td:nth-child(2) {
+  color: var(--primary-color);
+}
+
+.inst-row td:nth-child(2) span {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-left: 0.5rem;
+}
+
+.inst-row td:last-child {
+  width: 80px;
+  text-align: right;
 }
 
 .faculty-row {
-  background-color: #fafbfc;
+  background: var(--bg-color);
   display: none;
 }
 
@@ -121,28 +202,65 @@ th {
   display: table-row;
 }
 
-.faculty-card {
+.faculty-row > td {
   padding: 1rem;
-  border-left: 4px solid var(--secondary-color);
-  margin-bottom: 0.5rem;
-  background: white;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
+/* Faculty Grid */
+.faculty-row td > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
 
+.faculty-card {
+  padding: 0.5rem;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+}
+
+.faculty-card h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.faculty-card p {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.faculty-card a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.faculty-card a:hover {
+  text-decoration: underline;
+}
 
 .sparkline-container {
   width: 100px;
-  height: 30px;
+  height: 25px;
   display: inline-block;
   vertical-align: middle;
 }
 
+.faculty-card .sparkline-container {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
 footer {
   text-align: center;
-  padding: 2rem;
-  background-color: #222;
-  color: #888;
+  padding: 1rem;
   margin-top: auto;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--header-bg);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
 }

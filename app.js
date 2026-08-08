@@ -1,6 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
   let allData = null;
 
+  // Theme Toggle Logic
+  const themeToggle = document.getElementById('themeToggle');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  
+  if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && prefersDark)) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    let currentTheme = document.documentElement.getAttribute('data-theme');
+    let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+
   // Utility for escaping HTML
   function escapeHTML(str) {
     if (str === null || str === undefined) return '';
@@ -182,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       });
       
-      td.innerHTML = facultyHtml || '<p>No matching faculty.</p>';
+      td.innerHTML = facultyHtml ? `<div>${facultyHtml}</div>` : '<p>No matching faculty.</p>';
       drillDownTr.appendChild(td);
       
       // Toggle expansion
