@@ -143,7 +143,7 @@ averageCount = Math.pow(
 - **Name**: VLSI-Ranking
 - **Creator credit**: i-hate-apple
 - **Tagline suggestion**: *"Rankings for the chips that actually ship."* (or similar — happy to brainstorm more if you want options)
-- **Footer**: "Built by i-hate-apple. Open-source, community-maintained, inspired by CSRankings."
+- **Footer**: "Built by [i-hate-apple](https://github.com/i-hate-apple). Inspired by CSRankings."
 
 ---
 
