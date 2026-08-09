@@ -1,3 +1,17 @@
 venue_code,full_name,subarea,tier
 isscc,International Solid-State Circuits Conference,Circuits & VLSI Design,1
+jssc,IEEE J. Solid-State Circuits,Circuits & VLSI Design,1
+vlsic,Symposium on VLSI Circuits,Circuits & VLSI Design,1
+cicc,Custom Integrated Circuits Conference,Circuits & VLSI Design,2
+esscirc,European Solid-State Circuits Conference,Circuits & VLSI Design,2
 dac,Design Automation Conference,EDA,1
+iccad,International Conference on Computer-Aided Design,EDA,1
+tcad,IEEE Trans. Comput. Aided Des. Integr. Circuits Syst.,EDA,1
+date,Design Automation and Test in Europe,EDA,2
+aspdac,Asia and South Pacific Design Automation Conference,EDA,2
+isca,International Symposium on Computer Architecture,Computer Architecture,1
+micro,International Symposium on Microarchitecture,Computer Architecture,1
+hpca,International Symposium on High Performance Computer Architecture,Computer Architecture,1
+asplos,Architectural Support for Programming Languages and Operating Systems,Computer Architecture,1
+ches,Cryptographic Hardware and Embedded Systems,Hardware Security,1
+host,Hardware Oriented Security and Trust,Hardware Security,1

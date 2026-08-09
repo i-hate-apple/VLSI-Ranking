@@ -1,3 +1,22 @@
 alias_name,venue_code
-International Solid-State Circuits Conference,isscc
-Design Automation Conference,dac
+isscc,isscc
+dac,dac
+jssc,jssc
+vlsic,vlsic
+cicc,cicc
+esscirc,esscirc
+iccad,iccad
+tcad,tcad
+date,date
+aspdac,aspdac
+isca,isca
+micro,micro
+hpca,hpca
+asplos,asplos
+ches,ches
+host,host
+IEEE Journal of Solid-State Circuits,jssc
+IEEE J. Solid-State Circuits,jssc
+IEEE Trans. Comput. Aided Des. Integr. Circuits Syst.,tcad
+Int. Symp. Comput. Archit.,isca
+Int. Symp. Microarchitecture,micro
