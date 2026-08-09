@@ -2,6 +2,7 @@ import csv
 import json
 import os
 import requests
+import re
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 import time
@@ -19,9 +20,12 @@ def load_csv(filepath):
 def resolve_author_entity(author_name, faculty_id_by_name):
     """
     Match an author name from an API to a faculty ID using exact match and aliases.
+    Strips DBLP 4-digit disambiguation numbers (e.g. ' 0001') before matching.
     Returns the matched faculty ID or None.
     """
     author_name_lower = author_name.lower().strip()
+    # Strip DBLP disambiguation numbers (e.g., "david a. patterson 0001" -> "david a. patterson")
+    author_name_lower = re.sub(r'\s+\d{4}$', '', author_name_lower)
     return faculty_id_by_name.get(author_name_lower)
 
 def fetch_semantic_scholar_papers(scholar_id):
@@ -46,10 +50,13 @@ def fetch_semantic_scholar_papers(scholar_id):
             time.sleep(1.2)
             response = requests.get(url, params=params, timeout=10)
             
-            # TODO: Add retry-with-backoff on 429 responses before this scales to a larger faculty list.
-            # Currently it will break out and silently produce incomplete data for that faculty member.
             if response.status_code == 429:
-                pass # placeholder for future backoff logic
+                print(f"Rate limited by Semantic Scholar for {scholar_id}. Backing off...")
+                time.sleep(5) # backoff
+                response = requests.get(url, params=params, timeout=10)
+                if response.status_code == 429:
+                    print(f"Still rate limited. Skipping {scholar_id}.")
+                    break
                 
             if response.status_code == 404:
                 break
