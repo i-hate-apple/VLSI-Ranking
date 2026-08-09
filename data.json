@@ -1,37 +1,230 @@
 {
   "institutions": [
     {
-      "name": "Stanford",
+      "name": "MIT",
       "country": "Unknown",
       "faculty": [
         {
           "id": "f1",
-          "name": "Jane Doe",
-          "subareas": {},
-          "trend": [],
-          "coauthors": [],
+          "name": "Anantha P. Chandrakasan",
+          "subareas": {
+            "Circuits & VLSI Design": 4.81904761904762,
+            "EDA": 0.5833333333333334
+          },
+          "trend": [
+            {
+              "year": 2026,
+              "count": 0.2
+            },
+            {
+              "year": 2021,
+              "count": 0.14285714285714285
+            },
+            {
+              "year": 2019,
+              "count": 0.3333333333333333
+            },
+            {
+              "year": 2017,
+              "count": 0.5
+            },
+            {
+              "year": 2016,
+              "count": 0.6666666666666666
+            },
+            {
+              "year": 2015,
+              "count": 0.5
+            },
+            {
+              "year": 2014,
+              "count": 0.14285714285714285
+            },
+            {
+              "year": 2013,
+              "count": 0.8333333333333333
+            },
+            {
+              "year": 2012,
+              "count": 0.5833333333333334
+            },
+            {
+              "year": 2011,
+              "count": 0.5
+            },
+            {
+              "year": 2010,
+              "count": 0.5
+            },
+            {
+              "year": 1999,
+              "count": 0.5
+            }
+          ],
+          "coauthors": [
+            "f4"
+          ],
           "links": {
-            "homepage": "http://example.com/jane",
-            "scholar": "1234",
-            "dblp": "5678"
+            "homepage": "https://chandrakasan.mit.edu/",
+            "scholar": "1729656",
+            "dblp": "c/AnanthaChandrakasan"
           }
         }
       ]
     },
     {
-      "name": "MIT",
+      "name": "Princeton",
       "country": "Unknown",
       "faculty": [
         {
           "id": "f2",
-          "name": "John Smith",
-          "subareas": {},
-          "trend": [],
+          "name": "Naveen Verma",
+          "subareas": {
+            "EDA": 0.6666666666666666,
+            "Circuits & VLSI Design": 3.864718614718615
+          },
+          "trend": [
+            {
+              "year": 2022,
+              "count": 0.3333333333333333
+            },
+            {
+              "year": 2021,
+              "count": 0.47619047619047616
+            },
+            {
+              "year": 2019,
+              "count": 0.23376623376623376
+            },
+            {
+              "year": 2018,
+              "count": 0.39285714285714285
+            },
+            {
+              "year": 2017,
+              "count": 0.16666666666666666
+            },
+            {
+              "year": 2016,
+              "count": 0.16666666666666666
+            },
+            {
+              "year": 2015,
+              "count": 0.5
+            },
+            {
+              "year": 2014,
+              "count": 0.14285714285714285
+            },
+            {
+              "year": 2013,
+              "count": 0.14285714285714285
+            },
+            {
+              "year": 2011,
+              "count": 0.3333333333333333
+            },
+            {
+              "year": 2008,
+              "count": 0.6428571428571428
+            },
+            {
+              "year": 2007,
+              "count": 0.5
+            },
+            {
+              "year": 2006,
+              "count": 0.5
+            }
+          ],
+          "coauthors": [
+            "f1"
+          ],
+          "links": {
+            "homepage": "https://ee.princeton.edu/people/naveen-verma",
+            "scholar": "",
+            "dblp": "90/2252"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ETH Zurich",
+      "country": "Unknown",
+      "faculty": [
+        {
+          "id": "f3",
+          "name": "Onur Mutlu",
+          "subareas": {
+            "EDA": 2.8750000000000004
+          },
+          "trend": [
+            {
+              "year": 2023,
+              "count": 1.5
+            },
+            {
+              "year": 2019,
+              "count": 0.375
+            },
+            {
+              "year": 2018,
+              "count": 0.3333333333333333
+            },
+            {
+              "year": 2016,
+              "count": 0.3333333333333333
+            },
+            {
+              "year": 2013,
+              "count": 0.3333333333333333
+            }
+          ],
           "coauthors": [],
           "links": {
-            "homepage": "http://example.com/john",
-            "scholar": "4321",
-            "dblp": "8765"
+            "homepage": "https://people.inf.ethz.ch/omutlu/",
+            "scholar": "1734461",
+            "dblp": "m/OnurMutlu"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Stanford",
+      "country": "Unknown",
+      "faculty": [
+        {
+          "id": "f4",
+          "name": "Priyanka Raina",
+          "subareas": {
+            "EDA": 0.2510302197802198,
+            "Circuits & VLSI Design": 0.44358974358974357
+          },
+          "trend": [
+            {
+              "year": 2022,
+              "count": 0.14285714285714285
+            },
+            {
+              "year": 2020,
+              "count": 0.18509615384615385
+            },
+            {
+              "year": 2016,
+              "count": 0.16666666666666666
+            },
+            {
+              "year": 2013,
+              "count": 0.2
+            }
+          ],
+          "coauthors": [
+            "f1"
+          ],
+          "links": {
+            "homepage": "https://priyanka.su.domains/",
+            "scholar": "",
+            "dblp": "127/7770"
           }
         }
       ]

@@ -1,3 +1,5 @@
 id,name,affiliation,homepage,scholarid,dblpid,subareas
-f1,Jane Doe,Stanford,http://example.com/jane,1234,5678,Circuits & VLSI Design
-f2,John Smith,MIT,http://example.com/john,4321,8765,EDA
+f1,Anantha P. Chandrakasan,MIT,https://chandrakasan.mit.edu/,1729656,c/AnanthaChandrakasan,Circuits & VLSI Design
+f2,Naveen Verma,Princeton,https://ee.princeton.edu/people/naveen-verma,,90/2252,Circuits & VLSI Design
+f3,Onur Mutlu,ETH Zurich,https://people.inf.ethz.ch/omutlu/,1734461,m/OnurMutlu,Computer Architecture
+f4,Priyanka Raina,Stanford,https://priyanka.su.domains/,,127/7770,Circuits & VLSI Design
