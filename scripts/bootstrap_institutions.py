@@ -4,36 +4,7 @@ import csv
 import io
 import time
 import sys
-
-# Target countries based on user list: US, China, Taiwan, South Korea, Japan, India, Germany, UK, Belgium, Netherlands, France, Singapore
-TOP_INSTITUTION_KEYWORDS = [
-    # USA
-    "Massachusetts Institute of Technology", "Stanford", "Berkeley", "Urbana-Champaign", 
-    "Carnegie Mellon", "University of Michigan", "Georgia Institute", "Austin", "Cornell", 
-    "Purdue", "Los Angeles", "San Diego", "University of Washington", "Wisconsin", "Princeton",
-    # China
-    "Tsinghua", "Peking", "Shanghai Jiao Tong", "Zhejiang", "Fudan",
-    # Taiwan
-    "National Taiwan University", "National Tsing Hua", "Chiao Tung", "Cheng Kung",
-    # South Korea
-    "KAIST", "Seoul National", "POSTECH",
-    # Japan
-    "University of Tokyo", "Science Tokyo", "Kyoto University",
-    # India
-    "IIT Bombay", "IIT Delhi", "IIT Madras", "IIT Kanpur", "IISc",
-    # Germany
-    "TU Munich", "Aachen", "Dresden", "Karlsruhe",
-    # UK
-    "Cambridge", "Oxford", "Imperial College", "Edinburgh", "UCL",
-    # Belgium
-    "KU Leuven",
-    # Netherlands
-    "Delft", "Eindhoven",
-    # France
-    "Sorbonne", "Grenoble", "CentraleSupelec",
-    # Singapore
-    "National University of Singapore", "Nanyang Technological"
-]
+import os
 
 HARDWARE_VENUES = {"DAC", "ICCAD", "ISCA", "MICRO", "HPCA", "ASPLOS", "ISSCC", "CICC", "VLSI"}
 
@@ -43,30 +14,45 @@ try:
     cs_data = requests.get(cs_url).text
     cs_reader = csv.DictReader(io.StringIO(cs_data))
     
-    candidates = []
-    for row in cs_reader:
-        affiliation = row['affiliation']
-        if any(keyword.lower() in affiliation.lower() for keyword in TOP_INSTITUTION_KEYWORDS):
-            candidates.append(row)
+    candidates = list(cs_reader)
             
 except Exception as e:
     print(f"Failed to fetch CSRankings data: {e}")
     sys.exit(1)
 
-print(f"Found {len(candidates)} total faculty at top global institutions.")
-print("Querying DBLP to filter for active hardware researchers (this will take several hours)...")
+print(f"Found {len(candidates)} total faculty across all global institutions.")
+print("Querying DBLP to filter for active hardware researchers (this will take ~12 hours to complete)...")
+print("Checkpointing is ENABLED. You can stop (Ctrl+C) and restart this script at any time without losing progress.")
 
-valid_faculty = []
+# Load already processed faculty names to allow for resume
+processed_names = set()
+output_file = '../data/faculty_institutions.csv'
 
-with open('../data/faculty_institutions.csv', 'w', newline='', encoding='utf-8') as f:
+if os.path.exists(output_file):
+    with open(output_file, 'r', encoding='utf-8') as f:
+        reader = csv.reader(f)
+        header = next(reader, None)
+        for row in reader:
+            if len(row) > 1:
+                processed_names.add(row[1])
+    mode = 'a'
+else:
+    mode = 'w'
+
+with open(output_file, mode, newline='', encoding='utf-8') as f:
     writer = csv.writer(f)
-    writer.writerow(['id', 'name', 'affiliation', 'homepage', 'scholarid', 'dblpid', 'subareas'])
+    if mode == 'w':
+        writer.writerow(['id', 'name', 'affiliation', 'homepage', 'scholarid', 'dblpid', 'subareas'])
     
-    fac_idx = 1
+    fac_idx = len(processed_names) + 1
+    
     for i, candidate in enumerate(candidates):
         name = candidate['name']
         affiliation = candidate['affiliation']
         
+        if name in processed_names:
+            continue
+            
         print(f"[{i+1}/{len(candidates)}] Checking {name} ({affiliation})...", end='', flush=True)
         
         # 1. Find PID via DBLP Search API
@@ -119,9 +105,12 @@ with open('../data/faculty_institutions.csv', 'w', newline='', encoding='utf-8')
             else:
                 print(" Skipped (No hardware papers)")
                 
+            # Mark as processed even if skipped to save time on resume
+            processed_names.add(name)
+            
         except Exception as e:
             print(f" Error: {e}")
             time.sleep(2) # Backoff on error
 
-print(f"\nFinished! Found {fac_idx-1} active hardware researchers from top institutions.")
+print(f"\nFinished! Found {fac_idx-1} active hardware researchers from all global institutions.")
 print("Data saved to data/faculty_institutions.csv")
