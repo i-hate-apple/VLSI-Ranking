@@ -21,8 +21,6 @@ jobs:
 
       - name: Run data pipeline
         run: python scripts/pipeline.py
-        env:
-          IEEE_API_KEY: ${{ secrets.IEEE_API_KEY }}
 
       - name: Commit and push changes
         run: |

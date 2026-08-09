@@ -40,7 +40,7 @@
                   "properties": {
                     "homepage": { "type": "string" },
                     "scholar": { "type": "string" },
-                    "ieee": { "type": "string" }
+                    "dblp": { "type": "string" }
                   }
                 }
               },

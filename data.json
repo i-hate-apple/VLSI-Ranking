@@ -13,7 +13,7 @@
           "links": {
             "homepage": "http://example.com/jane",
             "scholar": "1234",
-            "ieee": "5678"
+            "dblp": "5678"
           }
         }
       ]
@@ -31,7 +31,7 @@
           "links": {
             "homepage": "http://example.com/john",
             "scholar": "4321",
-            "ieee": "8765"
+            "dblp": "8765"
           }
         }
       ]

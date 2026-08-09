@@ -193,6 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="sparkline-container" id="sparkline-fac-${index}-${fIdx}"></div>
             <p>Score: ${(fScore - 1).toFixed(2)}</p>
             <a href="${escapeHTML(f.links.homepage)}" target="_blank">Homepage</a>
+            ${f.links.scholar ? `<a href="https://scholar.google.com/citations?user=${escapeHTML(f.links.scholar)}" target="_blank">Scholar</a>` : ''}
+            ${f.links.dblp ? `<a href="https://dblp.org/pid/${escapeHTML(f.links.dblp)}.html" target="_blank">DBLP</a>` : ''}
           </div>
         `;
       });
