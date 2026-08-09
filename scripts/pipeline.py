@@ -2,6 +2,7 @@ import csv
 import json
 import os
 import requests
+import xml.etree.ElementTree as ET
 from collections import defaultdict
 import time
 
@@ -79,12 +80,74 @@ def fetch_semantic_scholar_papers(scholar_id):
             
     return papers
 
-def fetch_ieee_papers(ieee_id):
-    """Fetch papers for a given IEEE author ID."""
-    # This is a stub for the actual API call
-    # api_key = os.environ.get('IEEE_API_KEY')
-    # Requires IEEE API key: requests.get(f"http://ieeexploreapi.ieee.org/api/v1/search/articles?author={ieee_id}&apikey={api_key}")
-    return []
+def fetch_dblp_papers(dblp_id):
+    """Fetch papers for a given DBLP author ID (PID)."""
+    if not dblp_id:
+        return []
+    
+    url = f"https://dblp.org/pid/{dblp_id}.xml"
+    papers = []
+    
+    headers = {
+        "User-Agent": "wehateapple/1.0 (https://github.com/i-hate-apple/vlsiranking)"
+    }
+    
+    try:
+        # Courtesy delay
+        time.sleep(1.2)
+        response = requests.get(url, headers=headers, timeout=15)
+        response.raise_for_status()
+        
+        root = ET.fromstring(response.content)
+        
+        # Papers are wrapped in <r> elements inside the root <dblpperson>
+        for r in root.findall('r'):
+            # The actual publication node is usually <article> or <inproceedings>
+            pub_node = None
+            if len(r) > 0:
+                pub_node = r[0]
+            
+            if pub_node is None or pub_node.tag not in ('article', 'inproceedings'):
+                continue
+                
+            if pub_node.get('publtype') == 'informal':
+                continue
+                
+            title_node = pub_node.find('title')
+            title = ''.join(title_node.itertext()).strip() if title_node is not None else ''
+            
+            year_str = pub_node.findtext('year', default='')
+            year = int(year_str) if year_str.isdigit() else None
+            
+            venue = pub_node.findtext('journal')
+            if not venue:
+                venue = pub_node.findtext('booktitle')
+            venue = venue or ''
+            
+            authors = [a.text for a in pub_node.findall('author') if a.text]
+            
+            doi = ''
+            for ee in pub_node.findall('ee'):
+                if ee.text and 'doi.org/' in ee.text:
+                    doi = ee.text.strip()
+                    break
+            
+            if doi.startswith('https://doi.org/'):
+                doi = doi.replace('https://doi.org/', '')
+            
+            paper_obj = {
+                'title': title,
+                'year': year,
+                'venue': venue,
+                'authors': authors,
+                'doi': doi
+            }
+            papers.append(paper_obj)
+            
+    except Exception as e:
+        print(f"Error fetching DBLP papers for {dblp_id}: {e}")
+        
+    return papers
 
 def calculate_geometric_mean(subareas_dict):
     """Calculate the geometric mean of publication counts across active sub-areas."""
@@ -192,9 +255,9 @@ def process_data(data_dir, output_file):
         
         # Fetch publications from APIs
         s2_papers = fetch_semantic_scholar_papers(f.get('scholarid'))
-        ieee_papers = fetch_ieee_papers(f.get('ieeeid'))
+        dblp_papers = fetch_dblp_papers(f.get('dblpid'))
         
-        all_papers = s2_papers + ieee_papers
+        all_papers = s2_papers + dblp_papers
         
         # Deduplicate papers by title/doi to avoid double counting across APIs.
         papers = dedup_papers(all_papers)
@@ -227,7 +290,7 @@ def process_data(data_dir, output_file):
             'links': {
                 'homepage': f['homepage'],
                 'scholar': f['scholarid'],
-                'ieee': f['ieeeid']
+                'dblp': f['dblpid']
             }
         }
         
