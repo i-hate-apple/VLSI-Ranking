@@ -75,8 +75,8 @@
             }
           ],
           "coauthors": [
-            "f12",
-            "f4"
+            "f4",
+            "f12"
           ],
           "links": {
             "homepage": "https://chandrakasan.mit.edu/",
@@ -160,8 +160,8 @@
             }
           ],
           "coauthors": [
-            "f1",
-            "f6"
+            "f6",
+            "f1"
           ],
           "links": {
             "homepage": "https://ee.princeton.edu/people/naveen-verma",
@@ -461,9 +461,9 @@
             }
           ],
           "coauthors": [
-            "f13",
-            "f7",
             "f9",
+            "f7",
+            "f13",
             "f1",
             "f12"
           ],
@@ -563,10 +563,10 @@
             }
           ],
           "coauthors": [
-            "f3",
             "f7",
-            "f12",
-            "f4"
+            "f4",
+            "f3",
+            "f12"
           ],
           "links": {
             "homepage": "",
@@ -733,9 +733,9 @@
             }
           ],
           "coauthors": [
-            "f8",
             "f6",
-            "f4"
+            "f4",
+            "f8"
           ],
           "links": {
             "homepage": "",
@@ -1186,8 +1186,8 @@
             }
           ],
           "coauthors": [
-            "f13",
-            "f2"
+            "f2",
+            "f13"
           ],
           "links": {
             "homepage": "",
@@ -1515,8 +1515,8 @@
             }
           ],
           "coauthors": [
-            "f1",
             "f9",
+            "f1",
             "f4"
           ],
           "links": {
